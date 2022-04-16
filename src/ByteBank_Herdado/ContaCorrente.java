@@ -8,14 +8,20 @@ public class ContaCorrente extends oConta implements Tributavel{
     }
 
     @Override
-    public boolean sacar(double valorSaque) {
+    public void sacar(double valorSaque) {
         double valorASacaar = valorSaque +0.2;
-        return super.sacar(valorASacaar); 
+        super.sacar(valorASacaar);
     }
 
     @Override
     public void depositar(double valorDeposito) {
-        super.saldo+=valorDeposito;
+        if(valorDeposito>10){
+           System.out.println("O Deposito no valor de "+valorDeposito+", foi efetuado com Sucesso! ");
+        super.saldo+=valorDeposito; 
+        }else{
+            System.out.println("O Deposito Minimo é no valor de $10,00");
+        }
+        
     }
 
     @Override

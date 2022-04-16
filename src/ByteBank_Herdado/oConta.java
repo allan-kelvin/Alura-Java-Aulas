@@ -22,18 +22,15 @@ public abstract class oConta {
 
    public abstract void depositar( double valorDeposito);
 
-   public boolean sacar(double valorSaque ){
+   public void sacar(double valorSaque ){
         if (this.saldo >= valorSaque){
             this.saldo -=valorSaque;
-            System.out.println("Saque Efetuado com Sucesso!!");
-            return true;    
-        }else {
-            System.out.println("Saque não Efetuado, Saldo Insuficiente!!");
-            return false;          
+            System.out.println("Saque Efetuado com Sucesso!!");    
+        } else {
+            throw new SaldoInsuficienteException(("Saldo: "+ this.saldo+", Valor: "+ valorSaque));
         }
-    }
-   
-   public boolean transfere(double valorTransferencia, oConta contaDestino ){
+   }
+   public boolean transfere(double valorTransferencia, oConta contaDestino){
        if(this.saldo >=valorTransferencia){
            this.saldo -=valorTransferencia;
            contaDestino.depositar(valorTransferencia);
@@ -44,6 +41,12 @@ public abstract class oConta {
            return false;
        }
    } 
+   
+   /*OUTRA MANEIRA DE FAZER O METODO TRANSFERE*/
+   // public void transferencia(double valorTransferencia, oConta destino){
+     //   this.sacar(valorTransferencia);
+       // destino.depositar(valorTransferencia);
+   // }
     
    public double GetSaldo (){
        return this.saldo;
