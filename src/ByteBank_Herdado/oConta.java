@@ -87,6 +87,12 @@ public abstract class oConta {
         System.out.println("O total de Contas Criadas é:");
         return oConta.total;
     }
+
+    @Override
+    public String toString() {
+        return ("saldo=" + saldo + ", agencia=" + agencia + ", numero=" + numero + ", titular=" + titular);
+    }
    
+    
    
 }
